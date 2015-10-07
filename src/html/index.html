@@ -14,9 +14,10 @@
     <header>
     </header>
 
-    <body>
-        HELO WORD!
-            <auto-completion></auto-completion>
+    <body ng-controller="appController">
+        <div class="search">
+            <auto-completion ac-query="search($query)" ac-delay="delay" ac-select="select($selected)"></auto-completion>
+        </div>
     </body>
 
 </html>
