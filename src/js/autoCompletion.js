@@ -5,7 +5,8 @@ angular
             scope: {
                 queryFunction: '&acQuery',
                 export: '&acSelect',
-                delay: '=acDelay'
+                delay: '=acDelay',
+                maxlength: '=AcMaxlength'
             },
             templateUrl: '/static/html/autoCompletion.html',
             controller: ['$scope', '$timeout', '$window', '$element', function($scope, $timeout, $window, $element) {
@@ -17,6 +18,10 @@ angular
 
                 if (!$scope.delay) {
                     $scope.dela = 500;
+                };
+
+                if (!$scope.maxlength) {
+                    $scope.maxlength = 3;
                 };
 
                 $window.onclick = function(event) {
@@ -31,11 +36,14 @@ angular
                     if ($scope.timeout) {
                         $timeout.cancel($scope.timeout);
                     }
-                    $scope.timeout = $timeout(function() {
-                        $scope.searchlist = $scope.queryFunction({
-                            $query: $scope.query
-                        });
-                    }, $scope.delay)
+                    if ($scope.query.length >= $scope.maxlength) {
+                        $scope.timeout = $timeout(function() {
+                            $scope.searchlist = $scope.queryFunction({
+                                $query: $scope.query
+                            });
+                        }, $scope.delay)
+                    }
+
                 }
 
                 var markNeighbor = function(step) {
