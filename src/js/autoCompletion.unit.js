@@ -52,7 +52,7 @@ describe("AutoCompletion ", function() {
         $scope.select = function(selected) {};
 
         var element = $compile(
-            '<auto-completion ac-minlength="minlength" ac-delay="delay" ac-query="search($query)" ac-select="select($selected)"> < /auto-completion>'
+            '<auto-completion ac-minlength="minlength" ac-delay="delay" ac-key="test" ac-query="search($query)" ac-select="select($selected)"> < /auto-completion>'
         )($scope)
         var isolated = element.isolateScope();
 
@@ -62,6 +62,7 @@ describe("AutoCompletion ", function() {
         //then
         expect(isolated.delay).toBe(100);
         expect(isolated.minlength).toBe(5);
+        expect(isolated.key).toBe('test');
         expect(typeof(isolated.queryFunction)).toEqual('function');
         expect(typeof(isolated.export)).toEqual('function');
 
@@ -159,7 +160,6 @@ describe("AutoCompletion ", function() {
 
     it('should clean searchlist when user select some list element', function() {
         //given
-        var selectedQuery;
         var element = $compile('<auto-completion> </auto-completion>')($scope)
         var isolated = element.isolateScope();
 
@@ -178,8 +178,6 @@ describe("AutoCompletion ", function() {
 
     it('should mark first element when user press down arrow', function() {
         //given
-        var selectedQuery;
-
         var element = $compile('<auto-completion  > < /auto-completion>')(
             $scope)
         var isolated = element.isolateScope();
@@ -204,8 +202,6 @@ describe("AutoCompletion ", function() {
 
     it('should mark second element when user press twice down arrow', function() {
         //given
-        var selectedQuery;
-
         var element = $compile('<auto-completion  > < /auto-completion>')(
             $scope)
         var isolated = element.isolateScope();
@@ -230,8 +226,6 @@ describe("AutoCompletion ", function() {
 
     it('should mark second element when user press third down arrow', function() {
         //given
-        var selectedQuery;
-
         var element = $compile('<auto-completion  > < /auto-completion>')(
             $scope)
         var isolated = element.isolateScope();
@@ -257,8 +251,6 @@ describe("AutoCompletion ", function() {
 
     it('should mark first element when user press down arrow and up arrow', function() {
         //given
-        var selectedQuery;
-
         var element = $compile('<auto-completion  > < /auto-completion>')(
             $scope)
         var isolated = element.isolateScope();
@@ -281,6 +273,45 @@ describe("AutoCompletion ", function() {
         //then
         expect(isolated.marked.name).toBe('1');
     });
+
+
+
+    it('should display value of given property', function() {
+        //given
+        var element = $compile('<auto-completion ac-key="test"> < /auto-completion>')(
+            $scope)
+        var isolated = element.isolateScope();
+
+        //when
+        isolated.searchlist = [{
+            test: '1'
+        }, {
+            test: '2'
+        }]
+        $scope.$digest();
+
+        span = element.find('span');
+
+        //then
+        expect(span.html()).toBe('1');
+    });
+
+    it('should display whole object', function() {
+        //given
+        var element = $compile('<auto-completion> < /auto-completion>')(
+            $scope)
+        var isolated = element.isolateScope();
+
+        //when
+        isolated.searchlist = ['test', 'test2']
+        $scope.$digest();
+
+        span = element.find('span');
+
+        //then
+        expect(span.html()).toBe('test');
+    });
+
 
 
 });

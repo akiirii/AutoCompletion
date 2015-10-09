@@ -6,12 +6,16 @@ angular
                 queryFunction: '&acQuery',
                 export: '&acSelect',
                 delay: '=acDelay',
-                minlength: '=acMinlength'
+                minlength: '=acMinlength',
+                key: '@acKey'
             },
             template: ' <div class="ac-autoCompletion">' +
                 '<input type="text" ng-model="query" ng-click="test()" ng-keyup="keyUp($event)"/>' +
                 '<ul ng-show="searchlist.length">' +
-                '<li ng-repeat="element in searchlist" ng-click="select(element)" ng-mouseenter="mark(element)" ng-class="{active: element == marked}"> {{element.Title}}</li>' +
+                '<li ng-repeat="element in searchlist" ng-click="select(element)" ng-mouseenter="mark(element)" ng-class="{active: element == marked}">' +
+                '<span ng-if="key">{{element[key]}}</span>' +
+                '<span ng-if="!key">{{element}}</span>' +
+                '</li>' +
                 '</ul>' +
                 '</div>',
             controller: ['$scope', '$timeout', '$window', '$element', function($scope, $timeout, $window, $element) {
