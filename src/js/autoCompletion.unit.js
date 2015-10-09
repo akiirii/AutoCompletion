@@ -135,7 +135,6 @@ describe("AutoCompletion ", function() {
         li = element.find('li');
         li.triggerHandler(testEventClick)
 
-
         //then
         expect(selectedQuery.name).toBe('test');
     });
@@ -198,8 +197,6 @@ describe("AutoCompletion ", function() {
         testEventKeyup.keyCode = 40
         input.triggerHandler(testEventKeyup)
 
-
-
         //then
         expect(isolated.marked.name).toBe('1');
     });
@@ -226,7 +223,6 @@ describe("AutoCompletion ", function() {
         testEventKeyup.keyCode = 40
         input.triggerHandler(testEventKeyup)
         input.triggerHandler(testEventKeyup)
-
 
         //then
         expect(isolated.marked.name).toBe('2');
@@ -255,7 +251,6 @@ describe("AutoCompletion ", function() {
         input.triggerHandler(testEventKeyup)
         input.triggerHandler(testEventKeyup)
 
-
         //then
         expect(isolated.marked.name).toEqual('2');
     });
@@ -282,7 +277,6 @@ describe("AutoCompletion ", function() {
         input.triggerHandler(testEventKeyup)
         testEventKeyup.keyCode = 38
         input.triggerHandler(testEventKeyup)
-
 
         //then
         expect(isolated.marked.name).toBe('1');

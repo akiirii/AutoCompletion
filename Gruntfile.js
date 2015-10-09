@@ -46,7 +46,6 @@ module.exports = function(grunt) {
             .use('/lib/js', serveStatic('node_modules'))
             .use('/js', serveStatic('src/js'))
             .use('/css', serveStatic('tmp/css'))
-            .use('/static/html', serveStatic('src/html'))
             .use('/', serveStatic('src/html'))
             .listen(8888);
     });
