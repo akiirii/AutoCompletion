@@ -7,7 +7,6 @@ angular.module('demo', [
 
     $scope.select = function(selected) {
         $scope.selected = selected;
-        console.log(selected)
     };
 
     $scope.search = function(query) {

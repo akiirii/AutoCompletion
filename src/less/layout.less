@@ -1,0 +1,52 @@
+@page-normal-font-size: 13px;
+@page-big-font-size: 18px;
+@page-vary-big-font-size: 32px;
+
+@small-spacing: 5px;
+@medium-spacing: 10px;
+@big-spacing: 50px;
+
+@page-width: 768px;
+
+@dark-color: #363636;
+@light-color: #f8f8f8;
+@main-color:  #e5e5e5;
+@very-light-color: #ffffff;
+
+body {
+    font-family: Verdana, "Verdana Ref", sans-serif;
+    font-size: @page-normal-font-size;
+    color: @dark-color;
+    background-color: @light-color;
+    text-shadow: 0 0 2px @main-color;
+    min-width: 320px;
+}
+
+h1 {
+    font-weight: bold;
+    margin: 0 @big-spacing;
+    font-size: @page-vary-big-font-size;
+}
+
+header {
+    margin: @big-spacing auto;
+    max-width: @page-width;
+    text-align: center;
+}
+
+main {
+    margin: @big-spacing auto;
+    max-width: @page-width;
+}
+
+.container {
+    margin: @big-spacing;
+}
+
+.result {
+    font-size: @page-big-font-size;
+
+    .title {
+        font-weight: bold;
+    }
+}

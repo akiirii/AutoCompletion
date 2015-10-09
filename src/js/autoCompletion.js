@@ -10,7 +10,7 @@ angular
             },
             template: ' <div class="ac-autoCompletion">' +
                 '<input type="text" ng-model="query" ng-click="test()" ng-keyup="keyUp($event)"/>' +
-                '<ul>' +
+                '<ul ng-show="searchlist.length">' +
                 '<li ng-repeat="element in searchlist" ng-click="select(element)" ng-mouseenter="mark(element)" ng-class="{active: element == marked}"> {{element.Title}}</li>' +
                 '</ul>' +
                 '</div>',

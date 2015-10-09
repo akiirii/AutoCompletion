@@ -12,12 +12,25 @@
 
 
     <header>
+        <h1> Auto Completion </h1>
     </header>
 
     <body ng-controller="appController">
-        <div class="search">
-            <auto-completion ac-query="search($query)" ac-minlength="minlength" ac-delay="delay" ac-select="select($selected)"></auto-completion>
-        </div>
+
+        <main>
+
+
+            <div class="container">
+                <auto-completion ac-query="search($query)" ac-minlength="minlength" ac-delay="delay" ac-select="select($selected)"></auto-completion>
+            </div>
+
+
+            <div class="container result" ng-if="selected">
+                <span class="title">You select: </span>
+                <span>{{selected.Title}}</span>
+            </div>
+        </main>
+
     </body>
 
 </html>
