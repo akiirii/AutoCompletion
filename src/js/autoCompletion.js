@@ -47,8 +47,7 @@ angular
                             });
                         }, $scope.delay)
                     }
-
-                }
+                };
 
                 var markNeighbor = function(step) {
                     if ($scope.searchlist) {
@@ -59,7 +58,6 @@ angular
                             $scope.marked = next;
                         }
                     }
-
                 };
 
                 $scope.keyUp = function($event) {
