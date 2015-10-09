@@ -9,10 +9,10 @@
 
 #Directive attributes
 
-**ac-query** - function returning promise with array of results for given $query
-**ac-minlength** - minimum string length to start a search
-**ac-delay** -  search start delay
-**ac-select** -  called with $selected when user selects record
+* **ac-query** - function returning promise with array of results for given $query
+* **ac-minlength** - minimum string length to start a search
+* **ac-delay** -  search start delay
+* **ac-select** -  called with $selected when user selects record
 
 
 #Quick example
