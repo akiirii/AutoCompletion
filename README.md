@@ -6,7 +6,7 @@
 ## How to run demo
     1. $ npm install
     2. $ grunt demo
-    3. Open browser: *http://localhost:8888*
+    3. Open browser: http://localhost:8888
 
 ## How to run test
     $ grunt test
