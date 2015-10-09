@@ -11,7 +11,7 @@ angular
             template: ' <div class="ac-autoCompletion">' +
                 '<input type="text" ng-model="query" ng-click="test()" ng-keyup="keyUp($event)"/>' +
                 '<ul>' +
-                '<li ng-repeat="element in searchlist" ng-click="select(element)" ng-mouseenter="mark(element)" ng-class="{active: element == marked}"> {{element.name}}</li>' +
+                '<li ng-repeat="element in searchlist" ng-click="select(element)" ng-mouseenter="mark(element)" ng-class="{active: element == marked}"> {{element.Title}}</li>' +
                 '</ul>' +
                 '</div>',
             controller: ['$scope', '$timeout', '$window', '$element', function($scope, $timeout, $window, $element) {
@@ -42,10 +42,15 @@ angular
                     if ($scope.query.length >= $scope.maxlength) {
 
                         $scope.timeout = $timeout(function() {
-                            $scope.searchlist = $scope.queryFunction({
-                                $query: $scope.query
-                            });
+                            $scope.queryFunction({
+                                    $query: $scope.query
+                                })
+                                .then(function(response) {
+                                    $scope.searchlist = response.Books;
+                                });
                         }, $scope.delay)
+                    } else {
+                        $scope.searchlist = [];
                     }
                 };
 
@@ -81,8 +86,7 @@ angular
                     $scope.export({
                         $selected: element
                     })
-
-                    $scope.query = element.name;
+                    $scope.query = '';
                     $scope.searchlist = [];
                 };
 
