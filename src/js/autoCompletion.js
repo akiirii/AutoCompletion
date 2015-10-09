@@ -86,7 +86,7 @@ angular
                     $scope.export({
                         $selected: element
                     })
-                    $scope.query = element.Title;
+                    $scope.query = '';
                     $scope.searchlist = [];
                 };
 

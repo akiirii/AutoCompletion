@@ -154,7 +154,7 @@ describe("AutoCompletion ", function() {
         li.triggerHandler(testEventClick)
 
         //then
-        expect(isolated.query).toBe('test');
+        expect(isolated.query).toBe('');
     });
 
     it('should clean searchlist when user select some list element', function() {
