@@ -2,6 +2,7 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-jasmine');
 
     var connect = require('connect');
     var serveStatic = require('serve-static');
@@ -25,6 +26,18 @@ module.exports = function(grunt) {
                 tasks: ['less:dev']
 
             }
+        },
+        jasmine: {
+            dist: {
+                src: 'src/**/*.js',
+                options: {
+                    specs: 'src/**/*.unit.js',
+                    vendor: ['node_modules/angular/angular.js',
+                        'node_modules/angular-mocks/angular-mocks.js'
+                    ],
+                    summary: true
+                }
+            }
         }
     })
 
@@ -37,6 +50,8 @@ module.exports = function(grunt) {
             .use('/', serveStatic('src/html'))
             .listen(8888);
     });
+
+    grunt.registerTask('test', ['jasmine']);
 
     grunt.registerTask('demo', ['server', 'watch'])
 }

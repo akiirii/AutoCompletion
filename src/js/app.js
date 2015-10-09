@@ -3,16 +3,13 @@ angular.module('demo', [
 ]).controller('appController', ['$scope', '$http', function($scope) {
 
     $scope.delay = 500;
-    $scope.maxLength = 3;
+    $scope.minlength = 5;
 
     $scope.select = function(selected) {
-        console.log('AUT - Selected:', selected)
+        $scope.selected = selected;
     };
 
     $scope.search = function(query) {
-
-        console.log('AUT - Query:', query);
-
         return [{
             name: 'abc'
         }, {
