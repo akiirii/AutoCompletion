@@ -5,7 +5,11 @@
 
 ## How to run demo
     1. $ npm install
-    3. $ grunt demo
+    2. $ grunt demo
+
+## How to run test
+    $ grunt test
+
 
 #Directive attributes
 
